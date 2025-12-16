@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 45 20% 95%;
+
+    --card: 222 40% 10%;
+    --card-foreground: 45 20% 95%;
+
+    --popover: 222 40% 10%;
+    --popover-foreground: 45 20% 95%;
+
+    --primary: 38 90% 55%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 222 35% 15%;
+    --secondary-foreground: 45 20% 95%;
+
+    --muted: 222 30% 18%;
+    --muted-foreground: 220 15% 60%;
+
+    --accent: 38 90% 55%;
+    --accent-foreground: 222 47% 6%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 30% 20%;
+    --input: 222 30% 20%;
+    --ring: 38 90% 55%;
+
+    --radius: 0.5rem;
+
+    /* Custom design tokens */
+    --gradient-gold: linear-gradient(135deg, hsl(38 90% 55%), hsl(45 95% 65%));
+    --gradient-dark: linear-gradient(180deg, hsl(222 47% 6%), hsl(222 47% 4%));
+    --shadow-gold: 0 4px 30px hsl(38 90% 55% / 0.2);
+    --shadow-card: 0 10px 40px hsl(222 47% 2% / 0.5);
+    
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 45 20% 95%;
+    --sidebar-primary: 38 90% 55%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 222 35% 15%;
+    --sidebar-accent-foreground: 45 20% 95%;
+    --sidebar-border: 222 30% 20%;
+    --sidebar-ring: 38 90% 55%;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 45 20% 95%;
+    --card: 222 40% 10%;
+    --card-foreground: 45 20% 95%;
+    --popover: 222 40% 10%;
+    --popover-foreground: 45 20% 95%;
+    --primary: 38 90% 55%;
+    --primary-foreground: 222 47% 6%;
+    --secondary: 222 35% 15%;
+    --secondary-foreground: 45 20% 95%;
+    --muted: 222 30% 18%;
+    --muted-foreground: 220 15% 60%;
+    --accent: 38 90% 55%;
+    --accent-foreground: 222 47% 6%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 222 30% 20%;
+    --input: 222 30% 20%;
+    --ring: 38 90% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-gold);
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium 
+           transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5;
+    box-shadow: var(--shadow-gold);
+  }
+
+  .btn-outline {
+    @apply border border-primary text-primary px-6 py-3 rounded-lg font-medium 
+           transition-all duration-300 hover:bg-primary hover:text-primary-foreground;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 hover:-translate-y-2;
+  }
+
+  .section-title {
+    @apply text-sm uppercase tracking-[0.2em] text-primary font-medium mb-2;
+  }
+
+  .glass-card {
+    @apply bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+}
